@@ -1,4 +1,4 @@
-package DesignPattern.Tank;
+package DesignPattern.Tank.FactoryMethod;
 
 public class HpItem implements Item {
 
