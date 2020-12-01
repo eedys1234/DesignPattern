@@ -1,11 +1,8 @@
 package DesignPattern.Tank;
 
-import AbstractFactory.Button;
-import AbstractFactory.GUIFac;
-import AbstractFactory.LinuxGUIFac;
-import AbstractFactory.TextArea;
-import Bridge.DefaultMCF;
-import Bridge.PrintMorseCode;
+import SingleTon.SingleTon;
+import SingleTon.SingleTonTest;
+import SingleTon.SingleTonTest2;
 
 /**
  * Hello world!
@@ -13,10 +10,12 @@ import Bridge.PrintMorseCode;
  */
 public class App 
 {
-    public static void main( String[] args )
+    public static void main(String[] args)
     {
-    	PrintMorseCode printMorse = new PrintMorseCode(new DefaultMCF());
-    	printMorse.g().a().r().a().m();
-   
+		System.out.println("메인함수 실행");
+
+		SingleTonTest2.getInstance();
+
+		System.out.println("메인함수 종료");
     }
 }
