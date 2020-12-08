@@ -1,16 +1,9 @@
 package DesignPattern.Tank;
 
-import ChainResponsibility.Armor;
-import ChainResponsibility.Attack;
-import ChainResponsibility.Defense;
-import ChainResponsibility.Pitching;
-import Facade.Facade;
-import Mediator.Colleage;
-import Mediator.ConcreteColleage;
-import Mediator.ConcreteMediator;
-import Mediator.Mediator;
-import Observer.Button;
-import Observer.Button.OnClickListener;
+import java.util.Stack;
+
+import Memento.Memento;
+import Memento.Originator;
 
 /**
  * Hello world!
@@ -20,19 +13,33 @@ public class App
 {
     public static void main(String[] args)
     {
-    	Mediator mediator = new ConcreteMediator();
+    	Stack<Memento> mementos = new Stack<Memento>();
     	
-    	Colleage c1 = new ConcreteColleage();
-    	Colleage c2 = new ConcreteColleage();
-    	Colleage c3 = new ConcreteColleage();
+    	Originator originator = new Originator();
+
+    	originator.setState("state 1");
+    	mementos.push(originator.createMemento());
     	
-    	c1.join(mediator);
-    	c2.join(mediator);
-    	c3.join(mediator);
+    	originator.setState("state 2");
+    	mementos.push(originator.createMemento());
+
+    	originator.setState("state 3");
+    	mementos.push(originator.createMemento());
+
+    	originator.setState("state final");
+    	mementos.push(originator.createMemento());
+
+    	originator.restoreMemento(mementos.pop());
+    	System.out.println(originator.getState());
+
+    	originator.restoreMemento(mementos.pop());
+    	System.out.println(originator.getState());
     	
+    	originator.restoreMemento(mementos.pop());
+    	System.out.println(originator.getState());
     	
-    	c1.SendDate("AAA");
-    	c2.SendDate("BBB");
-    	c3.SendDate("CCC");
-	}
+    	originator.restoreMemento(mementos.pop());
+    	System.out.println(originator.getState());
+
+    }
 }
