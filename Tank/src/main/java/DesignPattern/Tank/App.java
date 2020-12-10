@@ -2,6 +2,8 @@ package DesignPattern.Tank;
 
 import java.util.Stack;
 
+import Flyweight.Flyweight;
+import Flyweight.FlyweightManager;
 import Memento.Memento;
 import Memento.Originator;
 
@@ -13,33 +15,15 @@ public class App
 {
     public static void main(String[] args)
     {
-    	Stack<Memento> mementos = new Stack<Memento>();
-    	
-    	Originator originator = new Originator();
+    	FlyweightManager flyweightManager = new FlyweightManager();
+    	Flyweight flyweight = flyweightManager.getFlyweight("A");
 
-    	originator.setState("state 1");
-    	mementos.push(originator.createMemento());
-    	
-    	originator.setState("state 2");
-    	mementos.push(originator.createMemento());
+    	System.out.println(flyweight.getData());
 
-    	originator.setState("state 3");
-    	mementos.push(originator.createMemento());
-
-    	originator.setState("state final");
-    	mementos.push(originator.createMemento());
-
-    	originator.restoreMemento(mementos.pop());
-    	System.out.println(originator.getState());
-
-    	originator.restoreMemento(mementos.pop());
-    	System.out.println(originator.getState());
-    	
-    	originator.restoreMemento(mementos.pop());
-    	System.out.println(originator.getState());
-    	
-    	originator.restoreMemento(mementos.pop());
-    	System.out.println(originator.getState());
+    	flyweight = flyweightManager.getFlyweight("B");
+    	System.out.println(flyweight.getData());
+    	flyweight = flyweightManager.getFlyweight("B");
+    	System.out.println(flyweight.getData());
 
     }
 }
