@@ -1,11 +1,12 @@
 package DesignPattern.Tank;
 
-import java.util.Stack;
+import java.util.LinkedList;
+import java.util.List;
 
-import Flyweight.Flyweight;
-import Flyweight.FlyweightManager;
-import Memento.Memento;
-import Memento.Originator;
+import Command.UserInterface;
+import Proxy.ProxyClass;
+import Proxy.ProxyInterface;
+import Proxy.ServiceImpl;
 
 /**
  * Hello world!
@@ -15,15 +16,7 @@ public class App
 {
     public static void main(String[] args)
     {
-    	FlyweightManager flyweightManager = new FlyweightManager();
-    	Flyweight flyweight = flyweightManager.getFlyweight("A");
-
-    	System.out.println(flyweight.getData());
-
-    	flyweight = flyweightManager.getFlyweight("B");
-    	System.out.println(flyweight.getData());
-    	flyweight = flyweightManager.getFlyweight("B");
-    	System.out.println(flyweight.getData());
-
+    	ProxyInterface proxyInterface = new ProxyClass(new ServiceImpl());
+    	proxyInterface.execute();
     }
 }
