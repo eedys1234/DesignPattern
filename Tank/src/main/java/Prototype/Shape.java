@@ -1,4 +1,4 @@
-package DesignPattern.Tank.Prototype;
+package Prototype;
 
 public class Shape implements Cloneable {
 

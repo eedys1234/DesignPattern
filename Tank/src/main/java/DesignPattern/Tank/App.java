@@ -1,12 +1,12 @@
 package DesignPattern.Tank;
 
-import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
-import Command.UserInterface;
-import Proxy.ProxyClass;
-import Proxy.ProxyInterface;
-import Proxy.ServiceImpl;
+import Lampda.IntegerSumSpliterator;
 
 /**
  * Hello world!
@@ -16,7 +16,19 @@ public class App
 {
     public static void main(String[] args)
     {
-    	ProxyInterface proxyInterface = new ProxyClass(new ServiceImpl());
-    	proxyInterface.execute();
+    	List<Integer> dataSet = IntStream.rangeClosed(0, 10000).boxed().collect(Collectors.toList());
+    	
+    	long start = System.currentTimeMillis();
+//    	dataSet.parallelStream().reduce(Integer::sum).ifPresent(System.out::println);
+    	dataSet.stream().reduce(Integer::sum).ifPresent(System.out::println);
+//    	System.out.println(dataSet.stream().reduce(0, (a, b)-> a + b));
+//    	StreamSupport.stream(new IntegerSumSpliterator(dataSet), true)
+//    				.reduce(Integer::sum)
+//    				.ifPresent(System.out::println);
+    	
+    	long end = System.currentTimeMillis();
+    	
+    	System.out.println((end-start));
+    	
     }
 }

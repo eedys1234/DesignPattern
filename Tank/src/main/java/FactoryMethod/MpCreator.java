@@ -1,4 +1,4 @@
-package DesignPattern.Tank.FactoryMethod;
+package FactoryMethod;
 
 public class MpCreator extends ItemCreator {
 
